@@ -14,18 +14,16 @@ describe DockingStation do
     describe '#release_bike' do
 
         it "raise error when docking_station.release_bike is empty" do
+            20.times {subject.release_bike}
             expect { subject.release_bike }.to raise_error "Docking station empty!"
         end
         it "raise error when docking_station is full" do
             expect {subject.dock(Bike.new)}.to raise_error "Docking station full"
         end
-    end
-
-    describe '#release_bike' do
-        it 'releases a bike' do
-            bike = Bike.new
-            subject.dock(bike)
-            expect(subject.release_bike).to eq bike
+    
+        it 'releases a bike from bikes array' do
+            expect(subject.release_bike).to be_instance_of Bike
+            expect(subject.bikes.length).to eq 19
         end
     end
 end

@@ -7,14 +7,12 @@ class DockingStation
   end
 
   def release_bike
-    fail "Docking station empty!" unless !@bikes.empty?
-    bike = @bikes.pop
+    fail "Docking station empty!" if @bikes.empty?
+    @bikes.pop
   end
   
   def dock(bike)
-  if @bikes.length == 20
-    fail "Docking station full" 
-  end
-  @bikes.push(bike)
+    fail "Docking station full" if @bikes.length == 20
+    @bikes.push(bike)
   end
 end
