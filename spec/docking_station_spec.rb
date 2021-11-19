@@ -11,6 +11,20 @@ describe DockingStation do
     it { is_expected.to respond_to(:dock).with(1).argument }
     it { is_expected.to respond_to(:bikes) }
 
+    describe '#initilize' do
+      it "will initilize with capacity of 20 if no argument is provided" do 
+        station = DockingStation.new
+        expect(station.capacity).to eq DockingStation::DEFAULT_CAPACITY
+      end
+
+      it "will initilize with the capacity of bikes specified" do
+      station = DockingStation.new(40)
+      expect(station.capacity).to eq 40
+     end
+
+    end
+
+
     describe '#release_bike' do
 
         it "raise error when docking_station.release_bike is empty" do
