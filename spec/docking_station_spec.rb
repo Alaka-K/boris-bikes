@@ -14,7 +14,7 @@ describe DockingStation do
     describe '#release_bike' do
 
         it "raise error when docking_station.release_bike is empty" do
-            20.times {subject.release_bike}
+            DockingStation::DEFAULT_CAPACITY.times {subject.release_bike}
             expect { subject.release_bike }.to raise_error "Docking station empty!"
         end
         it "raise error when docking_station is full" do
